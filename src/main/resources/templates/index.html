@@ -22,7 +22,7 @@
                     <td th:text="${p.id}"></td>
                     <td><a th:href="@{/posts/update/{id}(id=${p.id})}">[[${p.title}]]</a></td>
                     <td th:text="${p.author}"></td>
-                    <td th:text="${p.modifiedDate}"></td>
+                    <td th:text="${#temporals.format(p.modifiedDate, 'yyyy-MM-dd HH:mm')}"></td>
                 </tr>
             </tbody>
         </table>
