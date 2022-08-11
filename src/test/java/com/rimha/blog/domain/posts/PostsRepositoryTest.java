@@ -1,7 +1,9 @@
 package com.rimha.blog.domain.posts;
 
 import org.aspectj.lang.annotation.After;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -11,12 +13,13 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PostsRepositoryTest {
 
     @Autowired
     PostsRepository postsRepository;
 
-    @After(value = "")
+    @AfterAll
     public void cleanUp() {
         postsRepository.deleteAll();
     }
