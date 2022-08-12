@@ -22,6 +22,6 @@ public class IndexControllerTest {
 //        System.out.println("body = " + body);
 
         // then
-        Assertions.assertThat(body).contains("스프링 부트로 시작하는 웹 서비스");
+        Assertions.assertThat(body).contains("림하");
     }
 }
