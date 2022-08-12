@@ -5,5 +5,19 @@
     <title>스프링 부트 웹서비스</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div class="nav">
+    <h1>림하🥳</h1>
+    <div class="nav-items">
+            <span th:if="${userName} != null">
+                Logged in as : <span id="user">[[${userName}]]</span>
+                <a href="/logout" class="btn btn-info active nav-item" role="button">Logout</a>
+            </span>
+        <span th:unless="${userName} != null">
+                <a href="/oauth2/authorization/google" class="btn btn-outline-danger nav-item" role="button">Google Login</a>
+                <a href="/oauth2/authorization/naver" class="btn btn-success nav-item" role="button">Naver Login</a>
+            </span>
+    </div>
+</div>
