@@ -14,12 +14,6 @@ cache:
 
 script: "./mvnw clean package"
 
-# CI 실행 완료 시 메일로 알림
-notifications:
-  email:
-    recipients:
-      - harimlee1022@gmail.com
-
 before_deploy:
   - zip -r blog-webservice *
   - mkdir -p deploy
@@ -37,3 +31,20 @@ deploy:
     wait-unitl-deployed: true
     on:
       all_branches: true
+
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: rimha-blog-build
+    key: blog-webservice.zip  # 빌드 파일을 압축해서 전달
+    bundle_type: zip # 압축 확장자
+    applicaiton: rimha-blog # 웹 콘솔에서 등록한 CodeDeploy 애플리케이션
+    deployment_group: rimha-blog-group # 웹 콘솔에서 등록한 CodeDeploy 배포 그룹
+    region: ap-northeast-2
+    wait-until-deployed: true
+
+# CI 실행 완료 시 메일로 알림
+notifications:
+  email:
+    recipients:
+      - harimlee1022@gmail.com
