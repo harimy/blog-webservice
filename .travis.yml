@@ -21,7 +21,7 @@ notifications:
       - harimlee1022@gmail.com
 
 before_deploy:
-  - zip -r blog-webservice
+  - zip -r blog-webservice *
   - mkdir -p deploy
   - mv blog-webservice.zip deploy/blog-webservice.zip
 
