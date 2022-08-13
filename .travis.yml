@@ -21,9 +21,9 @@ notifications:
       - harimlee1022@gmail.com
 
 before_deploy:
-  - zip -r rimha-blog
+  - zip -r blog-webservice
   - mkdir -p deploy
-  - mv rimha-blog.zip deploy/rimha-blog.zip
+  - mv blog-webservice.zip deploy/blog-webservice.zip
 
 deploy:
   - provider: s3
