@@ -46,16 +46,12 @@ jobs:
     steps:
       - attach_workspace: # persist_to_workspace 에서 보관한 데이터에 접근 가능
           at: .
-      - aws-s3/sync:
-          aws-access-key-id: AWS_ACCESS_KEY
+      - aws-s3/copy:
           aws-region: AWS_DEFAULT_REGION
+          aws-access-key-id: AWS_ACCESS_KEY
           aws-secret-access-key: AWS_SECRET_KEY
           from: deploy/*
           to: 's3://rimha-blog-build' # S3 버킷
-      - aws-s3/copy:
-          from: deploy/*
-          to: 's3://rimha-blog-build' # S3 버킷
-          aws-region: AWS_DEFAULT_REGION
       - aws-code-deploy/deploy-bundle:
           application-name: rimha-blog
           deployment-group: rimha-blog-group
