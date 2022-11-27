@@ -69,6 +69,7 @@ workflows:
   build-deploy:
     jobs:
       - build
+      - aws-cli-cred-setup
       - deploy:
           filters:
             branches:
