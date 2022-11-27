@@ -35,10 +35,6 @@ jobs:
           to: 's3://rimha-blog-build' # S3 버킷
           aws-region: AWS_DEFAULT_REGION
       - aws-code-deploy/deploy-bundle:
-          filter:
-            branches:
-              only:
-                - main
           application-name: rimha-blog
           deployment-group: rimha-blog-group
           deployment-config: CodeDeployDefault.AllAtOnce
@@ -51,6 +47,10 @@ workflows:
     jobs:
       - build
       - deploy:
+          filter:
+            branches:
+              only:
+                - main
           context: AWS
           requires:
             - build
