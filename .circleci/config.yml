@@ -21,7 +21,7 @@ jobs:
             cp scripts/*.sh before-deploy/
             cp appspec.yml before-deploy/
             cp target/*.jar before-deploy/
-            cd before-deploy && zip -r blog-webservice.zip
+            cd before-deploy && zip -r blog-webservice.zip *
             cd ../ && mkdir -p deploy
             mv before-deploy/blog-webservice.zip deploy/blog-webservice.zip
       # debug
