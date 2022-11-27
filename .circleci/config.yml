@@ -33,7 +33,7 @@ jobs:
       - aws-s3/copy:
           from: deploy/*
           to: 's3://rimha-blog-build' # S3 버킷
-          aws-region: ap-northeast-2
+          aws-region: 'ap-northeast-2'
       - aws-code-deploy/deploy:
           filter:
             branches:
