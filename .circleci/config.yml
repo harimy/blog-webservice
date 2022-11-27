@@ -56,8 +56,6 @@ jobs:
           from: deploy/*
           to: 's3://rimha-blog-build' # S3 버킷
           aws-region: AWS_DEFAULT_REGION
-          aws_access_key_id: AWS_ACCESS_KEY
-          aws_secret_access_key: AWS_SECRET_KEY
       - aws-code-deploy/deploy-bundle:
           application-name: rimha-blog
           deployment-group: rimha-blog-group
