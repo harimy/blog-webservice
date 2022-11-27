@@ -34,7 +34,7 @@ jobs:
           from: deploy/*
           to: 's3://rimha-blog-build' # S3 버킷
           aws-region: AWS_DEFAULT_REGION
-      - aws-code-deploy/bundle-deploy:
+      - aws-code-deploy/deploy-bundle:
           filter:
             branches:
               only:
