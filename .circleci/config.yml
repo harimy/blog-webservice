@@ -11,12 +11,12 @@ jobs:
       - run:
           name: Build
           command: mvn -B -DskipTests clean package
-      - run:
-          name: Test
-          command: mvn test
+#      - run:
+#          name: Test
+#          command: mvn test
       - run:
           name: Create zip file for deploy
-          command:
+          command: |
             mkdir -p before-deploy
             cp scripts/*.sh before-deploy/
             cp appspec.yml before-deploy/
@@ -47,7 +47,7 @@ jobs:
       - aws-s3/copy:
           from: deploy/*
           to: 's3://rimha-blog-build' # S3 버킷
-          aws-region: AWS_DEFAULT_REGION
+          aws-region: $AWS_DEFAULT_REGION
       - aws-code-deploy/deploy-bundle:
           application-name: rimha-blog
           deployment-group: rimha-blog-group
