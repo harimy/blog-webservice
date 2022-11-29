@@ -1,6 +1,5 @@
 package com.rimha.blog.domain.posts;
 
-import org.aspectj.lang.annotation.After;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
