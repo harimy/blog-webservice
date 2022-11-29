@@ -12,9 +12,9 @@ jobs:
       - run:
           name: Build
           command: mvn -B -DskipTests clean package
-#      - run:
-#          name: Test
-#          command: mvn test
+      - run:
+          name: Test
+          command: mvn test
       - run:
           name: Create zip file for deploy
           command: |
@@ -25,15 +25,6 @@ jobs:
             cd before-deploy && zip -r blog-webservice.zip *
             cd ../ && mkdir -p deploy
             mv before-deploy/blog-webservice.zip deploy/blog-webservice.zip
-      # debug
-      - run:
-          name: pwd
-          command:
-            pwd
-      - run:
-          name: ls -la
-          command:
-            ls -la
       - persist_to_workspace: # job 간에 파일공유를 가능하게 하는 옵션
           root: .
           paths:
